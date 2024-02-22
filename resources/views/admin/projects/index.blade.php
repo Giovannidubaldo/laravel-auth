@@ -32,10 +32,19 @@
                                     <td>{{ Str::limit($project->description, 20, '(...)') }}</td>
                                     <td>{{ $project->start_date }}</td>
                                     <td>{{ $project->end_date }}</td>
-                                    <td>
+                                    <td class="d-flex">
                                         <a href="{{ route('admin.projects.show', ['project' => $project->id]) }}">more</a>
                                         <a href="{{ route('admin.projects.edit', ['project' => $project->id]) }}"
                                             class="btn btn-sm btn-warning mx-2"><i class="fas fa-edit"></i></a>
+                                        <form action="{{ route('admin.projects.destroy', ['project' => $project->id]) }}"
+                                            method="POST"
+                                            onsubmit="return confirm('Sei sicuro di voler cancellare questo progetto?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
