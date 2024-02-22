@@ -38,6 +38,7 @@ class StoreProjectRequest extends FormRequest
             'description.required' => 'La descrizione è obbligatoria',
             'description.max' => 'La descrizione deve contenere massimo 150 caratteri',
             'start_date.required' => 'La data di inizio progetto è obbligatoria',
+            'end_date.required' => 'La data di fine progetto è obbligatoria'
         ];
     }
 }

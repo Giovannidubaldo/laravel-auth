@@ -28,7 +28,10 @@
                         <div class="form-group col-6 mt-3">
                             <label for="end_date">Data di fine progetto</label>
                             <input type="date" name="end_date" id="end_date" value="{{ old('end_date') }}"
-                                class="form-control">
+                                class="form-control @error('start_date') is-invalid @enderror">
+                            @error('end_date')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group col-12 mt-3">
                             <label for="description">Descrizione</label>
