@@ -32,8 +32,10 @@
                                     <td>{{ Str::limit($project->description, 20, '(...)') }}</td>
                                     <td>{{ $project->start_date }}</td>
                                     <td>{{ $project->end_date }}</td>
-                                    <td><a href="{{ route('admin.projects.show', ['project' => $project->id]) }}">more</a>
-                                    </td>
+                                    <td>
+                                        <a href="{{ route('admin.projects.show', ['project' => $project->id]) }}">more</a>
+                                        <a href="{{ route('admin.projects.edit', ['project' => $project->id]) }}"
+                                            class="btn btn-sm btn-warning mx-2"><i class="fas fa-edit"></i></a>
                                 </tr>
                             @endforeach
                         </tbody>
