@@ -43,10 +43,9 @@ class ProjectController extends Controller
         $form_project = $request->all();
         $new_project = new Project();
 
-        $new_project->fill($form_project);
-
         $slug = Str::slug($form_project['name'], '-');
-        $new_project->slug = $slug;
+        $form_project['slug'] = $slug;
+        $new_project->fill($form_project);
         $new_project->save();
 
         return redirect()->route('admin.projects.index');
@@ -83,7 +82,13 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $form_project = $request->all();
+        $slug = Str::slug($form_project['name'], '-');
+        $form_project['slug'] = $slug;
+
+        $project->update($form_project);
+
+        return redirect()->route('admin.projects.index');
     }
 
     /**
