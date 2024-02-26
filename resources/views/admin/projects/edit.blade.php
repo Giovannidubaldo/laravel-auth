@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <h2 class="my-5 text-center">Modifica progetto</h2>
-                <form action="{{ route('admin.projects.update', $project->id) }}" method="post">
+                <form action="{{ route('admin.projects.update', $project->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row">
@@ -17,6 +17,22 @@
                             @error('name')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
+                        </div>
+                        <div class="form-group col-12">
+                            @if ($project->image != null)
+                                <div class="my-2">
+                                    <img src="{{ asset('/storage/' . $project->image) }}" alt="{{ $project->name }}"
+                                        class="img-fluid" width="100">
+                                </div>
+                            @else
+                                <div class="my-2">
+                                    <img src="{{ asset('/img/sfondo.jpg') }}" alt="{{ $project->name }}" class="img-fluid"
+                                        width="100">
+                                </div>
+                            @endif
+                            <label for="image">Immagine di copertina</label>
+                            <input type="file" name="image" id="image" class="form-control"
+                                placeholder="Inserisci un immagine" value="{{ old('image') }}">
                         </div>
                         <div class="form-group col-6 mt-3">
                             <label for="start_date">Data di inizio progetto</label>
