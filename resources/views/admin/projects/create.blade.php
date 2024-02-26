@@ -5,10 +5,10 @@
         <div class="row">
             <div class="col-12">
                 <h2 class="my-5 text-center">Aggiungi un nuovo post</h2>
-                <form action="{{ route('admin.projects.store') }}" method="post">
+                <form action="{{ route('admin.projects.store') }}" method="post" enctype=“multipart/form-data”>
                     @csrf
                     <div class="row">
-                        <div class="form-group col-12">
+                        <div class="form-group col-6">
                             <label for="name">Nome</label>
                             <input type="text" id="name" name="name" value="{{ old('name') }}"
                                 class="form-control @error('name') is-invalid @enderror"
@@ -16,6 +16,11 @@
                             @error('name')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="image">Immagine di copertina</label>
+                            <input type="file" name="image" id="image" class="form-control"
+                                placeholder="Inserisci un immagine">
                         </div>
                         <div class="form-group col-6 mt-3">
                             <label for="start_date">Data di inizio progetto</label>
