@@ -44,6 +44,7 @@ class ProjectController extends Controller
         $form_project = $request->all();
         $new_project = new Project();
 
+
         if ($request->hasFile('image')) {
             $path = Storage::disk('public')->put('projects_image', $form_project['image']);
             $form_project['image'] = $path;

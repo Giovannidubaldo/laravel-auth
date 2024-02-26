@@ -4,8 +4,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="my-5 text-center">Aggiungi un nuovo post</h2>
-                <form action="{{ route('admin.projects.store') }}" method="post" enctype=“multipart/form-data”>
+                <h2 class="my-5 text-center">Aggiungi un nuovo progetto</h2>
+                <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="form-group col-6">
@@ -20,7 +20,7 @@
                         <div class="form-group col-6">
                             <label for="image">Immagine di copertina</label>
                             <input type="file" name="image" id="image" class="form-control"
-                                placeholder="Inserisci un immagine" value="{{ old('name') }}">
+                                placeholder="Inserisci un immagine" value="{{ old('image') }}">
                         </div>
                         <div class="form-group col-6 mt-3">
                             <label for="start_date">Data di inizio progetto</label>
