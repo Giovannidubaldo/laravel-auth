@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use App\Models\Project;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -42,6 +43,11 @@ class ProjectController extends Controller
     {
         $form_project = $request->all();
         $new_project = new Project();
+
+        if ($request->hasFile('image')) {
+            $path = Storage::disk('public')->put('projects_image', $form_project['image']);
+            $form_project['image'] = $path;
+        }
 
         $slug = Str::slug($form_project['name'], '-');
         $form_project['slug'] = $slug;

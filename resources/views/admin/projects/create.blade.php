@@ -20,7 +20,7 @@
                         <div class="form-group col-6">
                             <label for="image">Immagine di copertina</label>
                             <input type="file" name="image" id="image" class="form-control"
-                                placeholder="Inserisci un immagine">
+                                placeholder="Inserisci un immagine" value="{{ old('name') }}">
                         </div>
                         <div class="form-group col-6 mt-3">
                             <label for="start_date">Data di inizio progetto</label>
